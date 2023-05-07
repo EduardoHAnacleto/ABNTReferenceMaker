@@ -12,20 +12,20 @@ namespace ABNTReferenceMaker.Models
         public string Title { get; set; }
         public string? SubTitle { get; set; }
         [Required]
-        public ICollection<Author> Authors { get; set; } = new List<Author>();
+        public List<Author> Authors { get; set; } = new List<Author>();
         public int AuthorId { get; set; } // para o entity criar a FK
         public PaperType PaperType { get; set; }
         public int? Chapter { get; set; }
         public int? Edition { get; set; }
         public string? Editor { get; set; }
+        public string Site { get; set; }
 
         [Display(Name = "Released on")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }
-        public string? City { get; set; }
-        public string? State { get; set; }
-        public string? Country { get; set; }
+        public string? Location { get; set; }
+
         [Display(Name = "Page")]
         public int? PageBeg { get; set; }
         [Display(Name = "End citation page")]
@@ -43,7 +43,7 @@ namespace ABNTReferenceMaker.Models
         }
 
         public Paper(int id, string title, string? subTitle, PaperType paperType, int? chapter, int? edition,
-            string? editor, DateTime releaseDate, string? city, string? state, string? country, int? pageBeg,
+            string? editor, DateTime releaseDate, string? location, int? pageBeg,
             int? pageEnd, int? version, string? journal, bool cited, DateTime addDate)
         {
             Id = id;
@@ -54,9 +54,7 @@ namespace ABNTReferenceMaker.Models
             Edition = edition;
             Editor = editor;
             ReleaseDate = releaseDate;
-            City = city;
-            State = state;
-            Country = country;
+            Location = location;
             PageBeg = pageBeg;
             PageEnd = pageEnd;
             Version = version;
